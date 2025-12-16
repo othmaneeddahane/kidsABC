@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/gradient_background"
+    android:padding="20dp">
+
+    <!-- En-tête avec icône -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/header_card"
+        android:padding="20dp"
+        android:layout_marginBottom="16dp"
+        android:elevation="4dp">
+
+        <!-- Icône étoile décorative -->
+
+
+        <!-- Titre principal -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" الحروف  LETTERES"
+            android:textSize="36sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:shadowColor="#80000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="4"
+            android:fontFamily="sans-serif-black" />
+
+        <!-- Sous-titre amusant -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" Touche une lettre et découvre sa magie ! "
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-medium" />
+
+    </LinearLayout>
+
+    <!-- Boutons de sélection d'alphabet -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="16dp">
+
+        <Button
+            android:id="@+id/arabicButton"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="Arabe"
+            android:textSize="16sp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/button_selected" />
+
+        <Button
+            android:id="@+id/frenchButton"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text=" Français"
+            android:textSize="16sp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/button_unselected" />
+
+    </LinearLayout>
+
+    <!-- RecyclerView avec design amélioré -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lettersRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="4dp"
+        android:clipToPadding="false" />
+
+</LinearLayout>

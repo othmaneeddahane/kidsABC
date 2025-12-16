@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Alphabet Arabe</string>
+    <string name="main_title">Alphabet Arabe</string>
+    <string name="main_subtitle">Clique sur une lettre pour apprendre !</string>
+    <string name="play_sound">🔊 Écouter</string>
+    <string name="clear_drawing">🗑️ Effacer</string>
+    <string name="drawing_instruction">Trace la lettre avec ton doigt !</string>
+</resources>
