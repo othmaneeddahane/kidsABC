@@ -1,4 +1,4 @@
-# Application Alphabet Arabe pour Enfants
+# Application Alphabet pour Enfants
 
 Application Android simple pour apprendre l'alphabet arabe, destinée aux débutants en programmation.
 
