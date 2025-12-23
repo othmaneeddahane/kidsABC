@@ -1,8 +1,12 @@
 package com.example.kidsabc
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
+import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
+import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -19,8 +23,19 @@ class DrawingActivity : AppCompatActivity() {
     private lateinit var drawingView: DrawingView   // Zone de dessin
     private lateinit var clearButton: LinearLayout  // Bouton pour effacer
     private lateinit var playButton: LinearLayout   // Bouton de son
+    private lateinit var rainbowButton: LinearLayout // Bouton arc-en-ciel
+    private lateinit var sparkleButton: LinearLayout // Bouton paillettes
+    private lateinit var undoButton: LinearLayout   // Bouton annuler
     private var mediaPlayer: MediaPlayer? = null    // Lecteur audio
     private var textToSpeech: TextToSpeech? = null  // Synthèse vocale
+    
+    // Palette de couleurs
+    private val colorViews = mutableListOf<View>()
+    private var currentColorView: View? = null
+    
+    // Tailles de pinceau
+    private val brushViews = mutableListOf<View>()
+    private var currentBrushView: View? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +68,89 @@ class DrawingActivity : AppCompatActivity() {
         drawingView = findViewById(R.id.drawingView)
         clearButton = findViewById(R.id.clearButton)
         playButton = findViewById(R.id.playButton)
+        rainbowButton = findViewById(R.id.rainbowButton)
+        sparkleButton = findViewById(R.id.sparkleButton)
+        undoButton = findViewById(R.id.undoButton)
+        
+        // Initialise la palette de couleurs
+        setupColorPalette()
+        
+        // Initialise les tailles de pinceau
+        setupBrushSizes()
+    }
+    
+    /**
+     * Configure la palette de couleurs interactive
+     */
+    private fun setupColorPalette() {
+        // Récupère toutes les vues de couleur
+        colorViews.add(findViewById(R.id.colorRed))
+        colorViews.add(findViewById(R.id.colorOrange))
+        colorViews.add(findViewById(R.id.colorYellow))
+        colorViews.add(findViewById(R.id.colorGreen))
+        colorViews.add(findViewById(R.id.colorBlue))
+        colorViews.add(findViewById(R.id.colorPurple))
+        colorViews.add(findViewById(R.id.colorPink))
+        colorViews.add(findViewById(R.id.colorBrown))
+        colorViews.add(findViewById(R.id.colorBlack))
+        
+        // Définit les couleurs correspondantes
+        val colors = listOf(
+            Color.parseColor("#FF6B6B"), // Rouge
+            Color.parseColor("#FFA500"), // Orange
+            Color.parseColor("#FFD93D"), // Jaune
+            Color.parseColor("#6BCB77"), // Vert
+            Color.parseColor("#4D96FF"), // Bleu
+            Color.parseColor("#9B59B6"), // Violet
+            Color.parseColor("#FF85B3"), // Rose
+            Color.parseColor("#8B4513"), // Marron
+            Color.parseColor("#2C3E50")  // Noir
+        )
+        
+        // Configure les clics pour chaque couleur
+        colorViews.forEachIndexed { index, view ->
+            view.setOnClickListener {
+                selectColor(view, colors[index])
+            }
+        }
+        
+        // Sélectionne la première couleur par défaut
+        selectColor(colorViews[0], colors[0])
+    }
+    
+    /**
+     * Configure les tailles de pinceau
+     */
+    private fun setupBrushSizes() {
+        brushViews.add(findViewById(R.id.brushSmall))
+        brushViews.add(findViewById(R.id.brushMedium))
+        brushViews.add(findViewById(R.id.brushLarge))
+        
+        val brushSizes = listOf(12f, 20f, 35f)
+        
+        brushViews.forEachIndexed { index, view ->
+            view.setOnClickListener {
+                selectBrushSize(view, brushSizes[index])
+            }
+        }
+        
+        // Sélectionne la taille moyenne par défaut
+        selectBrushSize(brushViews[1], brushSizes[1])
+    }
+    
+    /**
+     * Sélectionne une taille de pinceau
+     */
+    private fun selectBrushSize(brushView: View, size: Float) {
+        // Retire l'effet de la taille précédente
+        currentBrushView?.animate()?.scaleX(1f)?.scaleY(1f)?.setDuration(200)?.start()
+        
+        // Applique l'effet à la nouvelle taille
+        brushView.animate().scaleX(1.2f).scaleY(1.2f).setDuration(200).start()
+        currentBrushView = brushView
+        
+        // Change la taille du pinceau
+        drawingView.setBrushSize(size)
     }
 
     /**
@@ -70,12 +168,67 @@ class DrawingActivity : AppCompatActivity() {
         // Bouton pour effacer le dessin
         clearButton.setOnClickListener {
             drawingView.clearDrawing()
+            animateButton(it)
         }
         
         // Bouton pour jouer le son de la lettre
         playButton.setOnClickListener {
             playLetterSound()
+            animateButton(it)
         }
+        
+        // Bouton arc-en-ciel
+        rainbowButton.setOnClickListener {
+            drawingView.toggleRainbowMode()
+            animateButton(it)
+        }
+        
+        // Bouton paillettes
+        sparkleButton.setOnClickListener {
+            drawingView.toggleSparkleMode()
+            animateButton(it)
+        }
+        
+        // Bouton annuler
+        undoButton.setOnClickListener {
+            drawingView.undoLastStroke()
+            animateButton(it)
+        }
+    }
+    
+    /**
+     * Sélectionne une couleur de la palette
+     */
+    private fun selectColor(colorView: View, color: Int) {
+        // Retire l'effet de la couleur précédente
+        currentColorView?.animate()?.scaleX(1f)?.scaleY(1f)?.setDuration(200)?.start()
+        
+        // Applique l'effet à la nouvelle couleur
+        colorView.animate().scaleX(1.3f).scaleY(1.3f).setDuration(200).start()
+        currentColorView = colorView
+        
+        // Change la couleur du pinceau
+        drawingView.setDrawColor(color)
+    }
+    
+    /**
+     * Anime un bouton quand on clique dessus
+     */
+    private fun animateButton(view: View) {
+        val scaleDownX = ObjectAnimator.ofFloat(view, "scaleX", 0.9f)
+        val scaleDownY = ObjectAnimator.ofFloat(view, "scaleY", 0.9f)
+        scaleDownX.duration = 100
+        scaleDownY.duration = 100
+        
+        val scaleUpX = ObjectAnimator.ofFloat(view, "scaleX", 1f)
+        val scaleUpY = ObjectAnimator.ofFloat(view, "scaleY", 1f)
+        scaleUpX.duration = 100
+        scaleUpY.duration = 100
+        
+        val animatorSet = AnimatorSet()
+        animatorSet.play(scaleDownX).with(scaleDownY)
+        animatorSet.play(scaleUpX).with(scaleUpY).after(scaleDownX)
+        animatorSet.start()
     }
 
     /**

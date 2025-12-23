@@ -37,7 +37,7 @@ class LetterAdapter(
         
         // Affiche la lettre arabe en grand
         holder.letterText.text = letter.character
-        // Affiche le nom de la lettre
+
 
         
         // Définit ce qui se passe quand on clique sur la lettre

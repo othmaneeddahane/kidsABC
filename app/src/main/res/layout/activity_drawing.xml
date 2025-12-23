@@ -58,20 +58,129 @@
 
     </LinearLayout>
 
+    <!-- Palette de couleurs vibrantes -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="8dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <!-- Couleur Rouge -->
+            <View
+                android:id="@+id/colorRed"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="6dp"
+                android:background="@drawable/color_circle"
+                android:backgroundTint="#FF6B6B"
+                android:elevation="4dp" />
+
+            <!-- Couleur Orange -->
+            <View
+                android:id="@+id/colorOrange"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="6dp"
+                android:background="@drawable/color_circle"
+                android:backgroundTint="#FFA500"
+                android:elevation="4dp" />
+
+            <!-- Couleur Jaune -->
+            <View
+                android:id="@+id/colorYellow"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="6dp"
+                android:background="@drawable/color_circle"
+                android:backgroundTint="#FFD93D"
+                android:elevation="4dp" />
+
+            <!-- Couleur Vert -->
+            <View
+                android:id="@+id/colorGreen"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="6dp"
+                android:background="@drawable/color_circle"
+                android:backgroundTint="#6BCB77"
+                android:elevation="4dp" />
+
+            <!-- Couleur Bleu -->
+            <View
+                android:id="@+id/colorBlue"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="6dp"
+                android:background="@drawable/color_circle"
+                android:backgroundTint="#4D96FF"
+                android:elevation="4dp" />
+
+            <!-- Couleur Violet -->
+            <View
+                android:id="@+id/colorPurple"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="6dp"
+                android:background="@drawable/color_circle"
+                android:backgroundTint="#9B59B6"
+                android:elevation="4dp" />
+
+            <!-- Couleur Rose -->
+            <View
+                android:id="@+id/colorPink"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="6dp"
+                android:background="@drawable/color_circle"
+                android:backgroundTint="#FF85B3"
+                android:elevation="4dp" />
+
+            <!-- Couleur Marron -->
+            <View
+                android:id="@+id/colorBrown"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="6dp"
+                android:background="@drawable/color_circle"
+                android:backgroundTint="#8B4513"
+                android:elevation="4dp" />
+
+            <!-- Couleur Noir -->
+            <View
+                android:id="@+id/colorBlack"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="6dp"
+                android:background="@drawable/color_circle"
+                android:backgroundTint="#2C3E50"
+                android:elevation="4dp" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
     <!-- Boutons d'action modernes -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:padding="16dp">
+        android:padding="12dp">
 
         <!-- Bouton Écouter -->
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="4dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp"
             android:clickable="true"
@@ -84,21 +193,103 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@drawable/play_button_background"
-                android:padding="16dp"
+                android:padding="12dp"
                 android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="🔊"
-                    android:textSize="32sp"
-                    android:layout_marginBottom="4dp" />
+                    android:textSize="28sp"
+                    android:layout_marginBottom="2dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Écouter"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Bouton Arc-en-ciel -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground">
+
+            <LinearLayout
+                android:id="@+id/rainbowButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/rainbow_button_background"
+                android:padding="12dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🌈"
+                    android:textSize="28sp"
+                    android:layout_marginBottom="2dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Arc-en-ciel"
+                    android:textSize="14sp"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Bouton Paillettes -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground">
+
+            <LinearLayout
+                android:id="@+id/sparkleButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/sparkle_button_background"
+                android:padding="12dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="✨"
+                    android:textSize="28sp"
+                    android:layout_marginBottom="2dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Paillettes"
+                    android:textSize="14sp"
                     android:textColor="#FFFFFF"
                     android:textStyle="bold" />
 
@@ -111,7 +302,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="4dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp"
             android:clickable="true"
@@ -124,21 +315,21 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@drawable/clear_button_background"
-                android:padding="16dp"
+                android:padding="12dp"
                 android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="🗑️"
-                    android:textSize="32sp"
-                    android:layout_marginBottom="4dp" />
+                    android:textSize="28sp"
+                    android:layout_marginBottom="2dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Effacer"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textColor="#FFFFFF"
                     android:textStyle="bold" />
 
@@ -182,6 +373,101 @@
 
     </androidx.cardview.widget.CardView>
 
+    <!-- Sélecteur de taille de pinceau et bouton annuler -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🖌️"
+            android:textSize="24sp"
+            android:layout_marginEnd="8dp" />
+
+        <!-- Petit pinceau -->
+        <View
+            android:id="@+id/brushSmall"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/color_circle"
+            android:backgroundTint="#FFC107"
+            android:elevation="2dp" />
+
+        <!-- Pinceau moyen -->
+        <View
+            android:id="@+id/brushMedium"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/color_circle"
+            android:backgroundTint="#FFC107"
+            android:elevation="2dp" />
+
+        <!-- Gros pinceau -->
+        <View
+            android:id="@+id/brushLarge"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/color_circle"
+            android:backgroundTint="#FFC107"
+            android:elevation="2dp" />
+
+        <!-- Espace flexible -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <!-- Bouton Annuler -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground">
+
+            <LinearLayout
+                android:id="@+id/undoButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="#FF9800"
+                android:padding="12dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="↶"
+                    android:textSize="24sp"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="4dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Annuler"
+                    android:textSize="14sp"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
     <!-- Instructions animées -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -189,7 +475,7 @@
         android:orientation="horizontal"
         android:gravity="center"
         android:background="@drawable/progress_card"
-        android:padding="16dp"
+        android:padding="12dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
@@ -199,15 +485,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="✍️"
-            android:textSize="28sp"
-            android:layout_marginEnd="12dp" />
+            android:textSize="24sp"
+            android:layout_marginEnd="10dp" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Trace la lettre avec ton doigt !"
-            android:textSize="16sp"
+            android:textSize="15sp"
             android:textColor="#5D4037"
             android:textStyle="bold" />
 
@@ -215,7 +501,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="👆"
-            android:textSize="28sp" />
+            android:textSize="24sp" />
 
     </LinearLayout>
 
